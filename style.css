@@ -35,6 +35,8 @@ nav a {
     text-decoration: none;
     margin-left: 25px;
     font-size: 15px;
+    font-weight: 600;
+    padding: 8px 0;
 }
 
 /* HERO SECTION */
@@ -118,7 +120,9 @@ footer {
     background-color: #263b2d;
     color: white;
     text-align: center;
-    padding: 25px;
+    padding: 30px 20px;
+    line-height: 1.8;
+    font-size: 14px;
 }
 
 
@@ -165,6 +169,12 @@ button:hover {
     padding: 15px;
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
 .service-card img {
@@ -308,4 +318,46 @@ button:hover {
 
 .quote-button:hover {
     background-color: #23472c;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.quote-button {
+    transition: all 0.3s ease;
+}
+
+/* MOBILE MENU BUTTON */
+
+.mobile-menu-toggle {
+    display: none;
+    background: transparent;
+    color: white;
+    border: none;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+/* MOBILE NAVIGATION */
+
+@media (max-width: 768px) {
+
+    .mobile-menu-toggle {
+        display: block;
+    }
+
+    header {
+        position: relative;
+    }
+
+    #main-navigation {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        gap: 20px;
+    }
+
+    #main-navigation.active {
+        display: flex;
+    }
 }
