@@ -34,3 +34,29 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 });
+
+// FALLING LEAVES ANIMATION
+
+const leafContainer = document.getElementById("leaf-container");
+
+function createLeaf() {
+
+    if (!leafContainer) return;
+
+    const leaf = document.createElement("div");
+
+    leaf.classList.add("falling-leaf");
+    leaf.textContent = "🍃";
+
+    leaf.style.left = Math.random() * 100 + "vw";
+    leaf.style.animationDuration = (5 + Math.random() * 5) + "s";
+    leaf.style.fontSize = (16 + Math.random() * 15) + "px";
+
+    leafContainer.appendChild(leaf);
+
+    setTimeout(function () {
+        leaf.remove();
+    }, 10000);
+}
+
+setInterval(createLeaf, 1200);
