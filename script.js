@@ -72,3 +72,20 @@ setInterval(function () {
         createLeaf();
     }
 }, 1000);
+
+
+// CONTACT FORM SENDING MESSAGE
+
+const contactForm = document.getElementById("contact-form");
+
+if (contactForm) {
+    contactForm.addEventListener("submit", function () {
+        const submitButton = document.getElementById("submit-button");
+        const formStatus = document.getElementById("form-status");
+
+        submitButton.textContent = "Sending Request...";
+        submitButton.disabled = true;
+
+        formStatus.textContent = "Please wait while we send your request.";
+    });
+}
