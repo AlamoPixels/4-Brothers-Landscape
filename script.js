@@ -1,77 +1,28 @@
-// MOBILE MENU
 
-document.addEventListener("DOMContentLoaded", function () {
+// MOBILE NAVIGATION MENU
 
-    const menuButton = document.getElementById("mobile-menu-toggle");
-    const navigation = document.getElementById("main-navigation");
+const menuToggle = document.getElementById("mobile-menu-toggle");
+const mainNavigation = document.getElementById("main-navigation");
 
-    if (!menuButton || !navigation) {
-        console.log("Mobile menu elements not found.");
-        return;
-    }
+if (menuToggle && mainNavigation) {
+    menuToggle.addEventListener("click", function () {
+        const isOpen = mainNavigation.classList.toggle("active");
 
-    menuButton.addEventListener("click", function () {
-
-        navigation.classList.toggle("active");
-
-        const isOpen = navigation.classList.contains("active");
-
-        menuButton.textContent = isOpen ? "✕" : "☰";
-        menuButton.setAttribute("aria-expanded", isOpen);
-
+        menuToggle.setAttribute("aria-expanded", isOpen);
+        menuToggle.textContent = isOpen ? "✕" : "☰";
     });
 
-    navigation.querySelectorAll("a").forEach(function (link) {
+    // Close menu after selecting a link
+    const navigationLinks = mainNavigation.querySelectorAll("a");
 
+    navigationLinks.forEach(function (link) {
         link.addEventListener("click", function () {
-
-            navigation.classList.remove("active");
-            menuButton.textContent = "☰";
-            menuButton.setAttribute("aria-expanded", "false");
-
+            mainNavigation.classList.remove("active");
+            menuToggle.setAttribute("aria-expanded", "false");
+            menuToggle.textContent = "☰";
         });
-
     });
-
-});
-
-
-   
-// FALLING LEAVES ANIMATION
-
-const leafContainer = document.getElementById("leaf-container");
-
-function createLeaf() {
-    if (!leafContainer) return;
-
-    const leaf = document.createElement("div");
-
-    leaf.classList.add("falling-leaf");
-    leaf.textContent = "🍃";
-
-    // Start just outside the left edge
-    leaf.style.left = "-40px";
-
-    // Spread leaves across the entire screen height
-    leaf.style.top = Math.random() * 100 + "vh";
-
-    // Random sizes and speeds
-    leaf.style.fontSize = (18 + Math.random() * 18) + "px";
-    leaf.style.animationDuration = (10 + Math.random() * 8) + "s";
-
-    leafContainer.appendChild(leaf);
-
-    setTimeout(function () {
-        leaf.remove();
-    }, 19000);
 }
-
-// Create 4 leaves every second
-setInterval(function () {
-    for (let i = 0; i < 4; i++) {
-        createLeaf();
-    }
-}, 1000);
 
 
 // CONTACT FORM SENDING MESSAGE
@@ -83,9 +34,13 @@ if (contactForm) {
         const submitButton = document.getElementById("submit-button");
         const formStatus = document.getElementById("form-status");
 
-        submitButton.textContent = "Sending Request...";
-        submitButton.disabled = true;
+        if (submitButton) {
+            submitButton.textContent = "Sending Request...";
+            submitButton.disabled = true;
+        }
 
-        formStatus.textContent = "Please wait while we send your request.";
+        if (formStatus) {
+            formStatus.textContent = "Please wait while we send your request.";
+        }
     });
 }
