@@ -1,37 +1,35 @@
 // MOBILE MENU
 
-const menuButton = document.getElementById("mobile-menu-toggle");
-const navigation = document.getElementById("main-navigation");
+document.addEventListener("DOMContentLoaded", function () {
 
-menuButton.addEventListener("click", function () {
+    const menuButton = document.getElementById("mobile-menu-toggle");
+    const navigation = document.getElementById("main-navigation");
 
-    navigation.classList.toggle("active");
+    if (!menuButton || !navigation) {
+        console.log("Mobile menu elements not found.");
+        return;
+    }
 
-    const isOpen = navigation.classList.contains("active");
+    menuButton.addEventListener("click", function () {
 
-    menuButton.setAttribute("aria-expanded", isOpen);
+        navigation.classList.toggle("active");
 
-    menuButton.setAttribute(
-        "aria-label",
-        isOpen ? "Close navigation menu" : "Open navigation menu"
-    );
+        const isOpen = navigation.classList.contains("active");
 
-    menuButton.textContent = isOpen ? "✕" : "☰";
+        menuButton.textContent = isOpen ? "✕" : "☰";
+        menuButton.setAttribute("aria-expanded", isOpen);
 
-});
+    });
 
-// CLOSE MENU AFTER CLICKING A LINK
+    navigation.querySelectorAll("a").forEach(function (link) {
 
-const navigationLinks = navigation.querySelectorAll("a");
+        link.addEventListener("click", function () {
 
-navigationLinks.forEach(function (link) {
+            navigation.classList.remove("active");
+            menuButton.textContent = "☰";
+            menuButton.setAttribute("aria-expanded", "false");
 
-    link.addEventListener("click", function () {
-
-        navigation.classList.remove("active");
-        menuButton.textContent = "☰";
-        menuButton.setAttribute("aria-expanded", "false");
-        menuButton.setAttribute("aria-label", "Open navigation menu");
+        });
 
     });
 
