@@ -35,12 +35,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 
+
+   
 // FALLING LEAVES ANIMATION
 
 const leafContainer = document.getElementById("leaf-container");
 
 function createLeaf() {
-
     if (!leafContainer) return;
 
     const leaf = document.createElement("div");
@@ -48,15 +49,26 @@ function createLeaf() {
     leaf.classList.add("falling-leaf");
     leaf.textContent = "🍃";
 
-    leaf.style.left = Math.random() * 100 + "vw";
-    leaf.style.animationDuration = (5 + Math.random() * 5) + "s";
-    leaf.style.fontSize = (16 + Math.random() * 15) + "px";
+    // Start just outside the left edge
+    leaf.style.left = "-40px";
+
+    // Spread leaves across the entire screen height
+    leaf.style.top = Math.random() * 100 + "vh";
+
+    // Random sizes and speeds
+    leaf.style.fontSize = (18 + Math.random() * 18) + "px";
+    leaf.style.animationDuration = (10 + Math.random() * 8) + "s";
 
     leafContainer.appendChild(leaf);
 
     setTimeout(function () {
         leaf.remove();
-    }, 10000);
+    }, 19000);
 }
 
-setInterval(createLeaf, 1200);
+// Create 4 leaves every second
+setInterval(function () {
+    for (let i = 0; i < 4; i++) {
+        createLeaf();
+    }
+}, 1000);

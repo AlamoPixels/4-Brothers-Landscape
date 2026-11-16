@@ -368,16 +368,16 @@ button:hover {
 
 .falling-leaf {
     position: absolute;
-    top: -50px;
+    top: 0;
+    left: 0;
     color: #527b3e;
-    font-size: 22px;
     opacity: 0.8;
     animation: leaf-fall linear forwards;
 }
 
 @keyframes leaf-fall {
     0% {
-        transform: translateY(0) rotate(0deg);
+        transform: translateX(-10vw) translateY(0) rotate(0deg);
         opacity: 0;
     }
 
@@ -386,11 +386,11 @@ button:hover {
     }
 
     50% {
-        transform: translateY(50vh) translateX(40px) rotate(180deg);
+        transform: translateX(50vw) translateY(50px) rotate(180deg);
     }
 
     100% {
-        transform: translateY(110vh) translateX(-30px) rotate(360deg);
+        transform: translateX(110vw) translateY(100px) rotate(360deg);
         opacity: 0;
     }
 }
