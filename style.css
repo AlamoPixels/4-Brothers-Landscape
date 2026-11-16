@@ -341,12 +341,14 @@ button:hover {
 
 @media (max-width: 768px) {
 
-    .mobile-menu-toggle {
-        display: block;
-    }
-
     header {
         position: relative;
+        flex-direction: column;
+    }
+
+    .mobile-menu-toggle {
+        display: block;
+        margin-top: 15px;
     }
 
     #main-navigation {
@@ -355,6 +357,7 @@ button:hover {
         align-items: center;
         width: 100%;
         gap: 20px;
+        margin-top: 15px;
     }
 
     #main-navigation.active {
